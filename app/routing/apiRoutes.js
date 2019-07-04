@@ -15,53 +15,62 @@ module.exports = function (app) {
 
     // This method takes in the user information and compares it with existing data to make a friend match.
     app.post("/api/friends", function(req, res) {
+        console.log(req.body);
 
-        // Creates a new object that will contain the name and "score" of the best-matched friend.
-        var bestMatch = {
-          name: "",
-          friendDifference: 1000
-        };
-    
-        console.log(req.body)
+		// This variable represents the user's scores from the survey. 
+        var surveyResults = req.body.scores;
         
-        // userData is set to all of the info the user inputs. userScores is set to only their scores.
-        var userData = req.body;
-        var userScores = userData.scores;
-    
-        // This variable will be used later to help determine which person in the array is the best match.
-        var totalDifference = 0;
-    
-        // Loops through the entire array of friends and sets one friend to the variable currentFriend.
-        // The totalDifference is still zero at this point, because we aren't comparing anything.
-        for (var i = 0; i < friendsArray.length; i++) {
-          var currentFriend = friendsArray[i];
-          totalDifference = 0;
-    
-          console.log(currentFriend.name);
+		// Looping through the scores and making each one an integer.
+		for (var i = 0; i < surveyResults.length; i++) {
+			surveyResults[i] = parseInt(surveyResults[i]);
+		}
 
-          // Loops through the scores of the currentFriend (selected in the above for loop) and sets those to a variable called currentFriendScore.
-          for (var j = 0; j < currentFriend.scores.length; j++) {
-            var currentFriendScore = currentFriend.scores[j];
-            var currentUserScore = userScores[j];
+        // This variable stores the difference between the user input and a friend already in the array.
+        // The current number of 100 is arbitrary and will change based on the user's scores. 
+        var totalDifference = 100;
+        // This variable represents an index in the array for the best match.
+		var bestMatch = 0; 
+
+		// Looping through the entire array to select every entry. 
+		for (i = 0; i < friendsArray.length; i++) {
+
+            // This variable stores the difference function (see below) that calculates the difference between two arrays.
+            // In this instance(the user's scoresand the scores of each friend in the array ([i])).
+			var tempDifference = difference(surveyResults, friendsArray[i].scores);
+
+			// console log the difference between user choices and pet being compared
+			console.log("difference between", surveyResults, "and", friendsArray[i].name, friendsArray[i].scores, "=", tempDifference);
+
+            // If the temporary difference is less than the total difference, then the temporary
+            // difference should equal the new total difference, signifying a best match. The best match
+            // variable is then updated to be the index of that friend.
+			if (tempDifference < totalDifference) {
+				totalDifference = tempDifference;
+				bestMatch = i;
+			}
+		}
+
+		// function to calculate the difference between two arrays
+		// it cycles through values of each array and subtracts them
+		// from values of the other aray, and applies absolute
+		// value function, then returns the total tally reflecting
+        // the deviation between the two arrays.
+        // This function calculates the difference between two arrays (in this case, the arrays of scores).
+		function difference(array1, array2) {
+			var differenceAmount=0;
             
-            // This equation finds the difference between each number stored as the currentUserScore and the ones stored as the currentFriendScore,
-            // and adds them together. Math.abs is needed to prevent a negative score. 
-            totalDifference += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));
-          }
-          
-          // If the the total difference is less than or equal to the friendDifference property of the bestMatch object,
-          // then the currentFriend is the best match!
-          if (totalDifference <= bestMatch.friendDifference) {
-            bestMatch.name = currentFriend.name;
-            bestMatch.friendDifference = totalDifference;
-          }
-        }
+            // Loops through array one...
+			for (var i = 0; i < array1.length; i++) {
+                // The difference of each array is calculated with the absolute math function (no negative numbers!),
+                // and is added to the differenceAmount (which is set to 0).
+				differenceAmount += Math.abs(array1[i] - array2[i]);
+			}
+			return differenceAmount;
+		}
 
-        // Pushes the user input into the array.
-        friendsArray.push(userData);
-    
-        // Returns the data (name and score) in the bestMatch object in json format, so that we can display it to the user.
-        res.json(bestMatch);
-      });
-};
+		// Sends whatever is the bestMatch index of the friendsArray to the HTML page.
+		res.send(friendsArray[bestMatch]);
+	});
+
+}
 
