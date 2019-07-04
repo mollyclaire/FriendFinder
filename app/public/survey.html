@@ -10,11 +10,13 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+    <!-- Makes sure the width of uploaded photo fits within the modal -->
     <style>
         img {
             max-width: 100%;
         }
     </style>
+
 </head>
 
 <body>
@@ -191,12 +193,6 @@
 
 </div>
 
-    <!-- Test Area -->
-    <!-- <div>
-        <div id="match-name"></div>
-        <div id="match-img"></div>
-    </div> -->
-
     <!-- Modal -->
     <div class="modal" id="display-modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -237,17 +233,33 @@
                 ]
             }
 
-            // AJAX post the data to the friends API.
+            // This variable is set to the URL of the window.
             var currentURL = window.location.origin;
+            // AJAX request using the currentURL + the api route below. The user input (entry) is then run through 
+            // the POST method at the specified URL, and the data is received back to the user.
             $.post(currentURL + "/api/friends", entry, function(data) {
                 console.log(data);
-                // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+                // Displays both the text and photo from the data and displays them on the page (in the modal).
                 $("#match-name").text(data.name);
                 $("#match-img").attr("src", data.photo);
 
                 // Modal functionality 
                 $("#display-modal").modal("toggle");
             })
+
+            // Clear the form when submitting
+			$("#name").val("");
+			$("#photo").val("");
+			$("#question1").val("1");
+			$("#question2").val("1");
+			$("#question3").val("1");
+			$("#question4").val("1");
+			$("#question5").val("1");
+			$("#question6").val("1");
+			$("#question7").val("1");
+			$("#question8").val("1");
+			$("#question9").val("1");
+			$("#question10").val("1");
         })
 
     </script>
