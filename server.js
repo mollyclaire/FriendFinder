@@ -12,13 +12,13 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-
-
+// Requiring Routes (both API and HTML)
+// =============================================================
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    console.log("Server listening on: http://localhost:" + PORT);
   });
