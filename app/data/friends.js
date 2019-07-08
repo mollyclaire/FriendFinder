@@ -1,45 +1,45 @@
 var friendsArray = [
     {
-        "name": "Professor Umbridge",
-        "photo": "https://harrypottereverything12.weebly.com/uploads/3/0/2/2/30227685/5547976_orig.jpg",
+        "name": "Margo",
+        "photo": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr02/2013/7/18/16/27-signs-you-are-margot-tenenbaum-1-22576-1374177662-11_big.jpg",
         "scores": [
-            5,
-            4,
-            3,
-            2,
+            1,
+            1,
             1,
             5,
-            4,
-            3,
-            2,
+            1,
+            5,
+            1,
+            1,
+            5,
             1
         ]
 
     },
     {
-        "name": "Snape",
-        "photo": "https://res.cloudinary.com/jerrick/image/upload/f_auto,fl_progressive,q_auto,c_fit,w_680/ojhhd7hcfdi24vkanydd",
+        "name": "Etheline",
+        "photo": "https://i.pinimg.com/originals/e1/3a/54/e13a54af2e6656bea59a83392679f2e1.png",
         "scores": [
-            2,
-            3,
-            4,
+            1,
+            1,
+            1,
+            1,
             5,
             1,
-            3,
             1,
             1,
-            2,
+            1,
             5
         ]
 
     },
     {
-        "name": "Neville",
-        "photo": "https://i.pinimg.com/originals/71/19/7b/71197bb79e53c8b31e11f1ade3148d86.jpg",
+        "name": "Richie",
+        "photo": "https://3.bp.blogspot.com/-Crhg0jJwwlk/V_lAryoRTdI/AAAAAAAAIx8/euXj8OU07s8AD1NXD8wwrrGvfdcYXFI1ACLcB/s1600/richie_adult.png",
         "scores": [
-            1,
-            1,
-            1,
+            5,
+            5,
+            5,
             1,
             1,
             1,
