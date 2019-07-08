@@ -9,7 +9,7 @@ Click "Go to survey" on the homepage. Then fill out the short form at the top of
 
 After you submit your results, the app will select a friend that has similar results. The app is assuming you will be friends with someone who answered the questions most similarily to you. Good luck!
 
-![Image of Survey Page](images/Screenshot-Surve.png)
+![survey](images/Screenshot-Survey.png)
 
 ## Process
 I first created two HTML files for the two pages (the home page + survey page). After this, I created a simple file with an array containing data for "friends". I hard-coded the data for three "friends," so that I could perform tests. I then created a server and established a local connection. I was able to test my app by running "node server.js" on my local PORT. 
