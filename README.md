@@ -2,7 +2,9 @@
 Homework assignment for module #13 (U.T. Coding Bootcamp)
 
 ## Motivation
-I created this web app in order to gain a better understanding of how to create my own server-side APIs using Express.js. The app allows the user to find a new friend by comparing the answers stored on the server. See instructions below to use! 
+I created this web app in order to gain a better understanding of how to create my own server-side APIs using Express.js. The app allows the user to find a new friend by comparing the answers stored on the server. See instructions and link below to use! 
+
+[Click here to use the app.](https://frozen-mountain-97228.herokuapp.com/)
 
 ## How to Use
 Click "Go to survey" on the homepage. Then fill out the short form at the top of the survey questionaire page. After this, read each of the ten questions, and select a number (1-5) to answer how true that statement is of you( 1 being not true at all and 5 being absolutely true). 
